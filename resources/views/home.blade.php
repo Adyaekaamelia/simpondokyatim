@@ -14,6 +14,10 @@
                         </div>
                     @endif
 
+                    @role('admin')
+                    <p>Role Admin</p>
+                    @endrole
+
                     {{ __('You are logged in!') }}
                 </div>
             </div>
