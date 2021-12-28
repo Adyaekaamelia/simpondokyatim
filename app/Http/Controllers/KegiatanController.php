@@ -14,7 +14,8 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        //
+         $kegiatan = Kegiatan::all();
+        return view('kegiatan.index', compact('kegiatan'));
     }
 
     /**
@@ -24,7 +25,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        //
+         return view('kegiatan.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $kegiatan = new Kegiatan;
+        $kegiatan->judul = $request->judul;
+        $kegiatan->isi = $request->isi;
+        $kegiatan->gambar = $request->gambar;
+        $kegiatan->save();
+        return redirect()->route('kegiatan.index');
     }
 
     /**
@@ -44,9 +56,10 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function show(Kegiatan $kegiatan)
+    public function show($id)
     {
-        //
+        $kegiatan = Kegiatan::findOrFail($id);
+        return view('kegiatan.show', compact('kegiatan'));
     }
 
     /**
@@ -55,9 +68,10 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kegiatan $kegiatan)
+    public function edit($id)
     {
-        //
+        $kegiatan = Kegiatan::findOrFail($id);
+        return view('kegiatan.edit', compact('kegiatan'));
     }
 
     /**
@@ -67,9 +81,20 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kegiatan $kegiatan)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $kegiatan = Kegiatan::findOrFail($id);
+        $kegiatan->judul = $request->judul;
+        $kegiatan->isi = $request->isi;
+        $kegiatan->gambar = $request->gambar;
+        $kegiatan->save();
+        return redirect()->route('kegiatan.index');
     }
 
     /**
@@ -78,8 +103,10 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kegiatan $kegiatan)
+    public function destroy($id)
     {
-        //
+        $kegiatan = Kegiatan::findOrFail($id);
+        $kegiatan->delete();
+        return redirect()->route('kegiatan.index');
     }
 }

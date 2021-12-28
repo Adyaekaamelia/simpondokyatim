@@ -246,14 +246,14 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'Data Pondok Yatim',
-            'url'         => 'admin/datapondok',
-            'icon'        => 'far fa-fw fa-file',
-        ],
          [
             'text'        => 'Data Anak',
-            'url'         => 'admin/pages',
+            'url'         => 'admin/dataanak',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Kegiatan',
+            'url'         => 'admin/kegiatan',
             'icon'        => 'far fa-fw fa-file',
         ],
          [

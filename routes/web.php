@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataanakController;
+use App\Http\Controllers\KegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +34,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], funct
      Route::get('profile', function(){
         return 'halaman profile admin';
     });
-     Route::get('datapondok', function(){
-        return view('datapondok.index');
-    });
+     
+    Route::resource('dataanak', DataanakController::class);
+    Route::resource('kegiatan', KegiatanController::class);
     });
 
