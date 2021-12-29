@@ -12,6 +12,20 @@
     </div>
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
+@endsection
+
+@section('js')
+<script src="{{ asset('DataTables/datatables.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('#example').DataTable();
+    });
+</script>
+@endsection
+
+
 @section('content')
     @include('layouts._flash')
     <div class="container">
@@ -25,7 +39,8 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="example">
+                                <thead>
                                 <tr>
                                     <th>Nomor</th>
                                     <th>Nama</th>
@@ -35,6 +50,8 @@
                                     <th>Wali</th>
                                     <th>Aksi</th>
                                 </tr>
+                                </thead>
+                                <tbody>
                                 @php $no=1; @endphp
                                 @foreach ($dataanak as $data)
                                     <tr>
@@ -58,6 +75,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -67,10 +85,4 @@
     </div>
 @endsection
 
-@section('css')
 
-@endsection
-
-@section('js')
-
-@endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
+use Session;
 
 class KegiatanController extends Controller
 {
@@ -14,7 +15,7 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-         $kegiatan = Kegiatan::all();
+        $kegiatan = Kegiatan::all();
         return view('kegiatan.index', compact('kegiatan'));
     }
 
@@ -25,7 +26,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-         return view('kegiatan.create');
+        return view('kegiatan.create');
     }
 
     /**
@@ -39,14 +40,24 @@ class KegiatanController extends Controller
         $validated = $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image|max:2048',
         ]);
 
         $kegiatan = new Kegiatan;
         $kegiatan->judul = $request->judul;
         $kegiatan->isi = $request->isi;
-        $kegiatan->gambar = $request->gambar;
+        // upload image / foto
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/kegiatan/', $name);
+            $kegiatan->gambar = $name;
+        }
         $kegiatan->save();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data saved successfully",
+        ]);
         return redirect()->route('kegiatan.index');
     }
 
@@ -86,14 +97,26 @@ class KegiatanController extends Controller
         $validated = $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image|max:2048',
         ]);
 
         $kegiatan = Kegiatan::findOrFail($id);
         $kegiatan->judul = $request->judul;
         $kegiatan->isi = $request->isi;
-        $kegiatan->gambar = $request->gambar;
+        // upload image / foto
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/kegiatan/', $name);
+            $kegiatan->gambar = $name;
+        }
+
         $kegiatan->save();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data edited successfully",
+        ]);
+
         return redirect()->route('kegiatan.index');
     }
 
@@ -107,6 +130,11 @@ class KegiatanController extends Controller
     {
         $kegiatan = Kegiatan::findOrFail($id);
         $kegiatan->delete();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data deleted successfully",
+        ]);
+
         return redirect()->route('kegiatan.index');
     }
 }
