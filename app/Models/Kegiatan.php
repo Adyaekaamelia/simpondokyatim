@@ -9,6 +9,10 @@ class Kegiatan extends Model
 {
     use HasFactory;
 
+    protected $visible = ['kebutuhan_harian', 'kebutuhan_obat'];
+    protected $fillable = ['kebutuhan_harian', 'kebutuhan_obat'];
+    public $timestamps = true;
+
     public function image()
     {
         if ($this->gambar && file_exists(public_path('image/kegiatan/' . $this->gambar))) {

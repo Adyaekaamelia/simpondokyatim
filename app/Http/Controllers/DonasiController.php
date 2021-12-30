@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kebutuhan;
+use App\Models\donasi;
 use Illuminate\Http\Request;
 use Session;
 
-class KebutuhanController extends Controller
+class DonasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class KebutuhanController extends Controller
      */
     public function index()
     {
-        $kebutuhan = Kebutuhan::all();
-        return view('kebutuhan.index', compact('kebutuhan'));
+        $donasi = Donasi::all();
+        return view('donasi.index', compact('donasi'));
 
     }
 
@@ -27,7 +27,7 @@ class KebutuhanController extends Controller
      */
     public function create()
     {
-        return view('kebutuhan.create');
+        return view('donasi.create');
 
     }
 
@@ -40,45 +40,49 @@ class KebutuhanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'kebutuhan_harian' => 'required',
-            'kebutuhan_obat' => 'required',
+            'nama' => 'required',
+            'email' => 'required',
+            'no_tlpn' => 'required',
+            'ket' => 'required',
         ]);
 
-        $kebutuhan = new Kebutuhan;
-        $kebutuhan->kebutuhan_harian = $request->kebutuhan_harian;
-        $kebutuhan->kebutuhan_obat = $request->kebutuhan_obat;
-        $kebutuhan->save();
+        $donasi = new Donasi;
+        $donasi->nama = $request->nama;
+        $donasi->email = $request->email;
+        $donasi->no_tlpn = $request->no_tlpn;
+        $donasi->ket = $request->ket;
+        $donasi->save();
         Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Data saved successfully",
         ]);
-        return redirect()->route('kebutuhan.index');
+        return redirect()->route('donasi.index');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kebutuhan  $kebutuhan
+     * @param  \App\Models\donasi  $donasi
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $kebutuhan = Kebutuhan::findOrFail($id);
-        return view('kebutuhan.show', compact('kebutuhan'));
+        $donasi = Donasi::findOrFail($id);
+        return view('donasi.show', compact('donasi'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kebutuhan  $kebutuhan
+     * @param  \App\Models\donasi  $donasi
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $kebutuhan = Kebutuhan::findOrFail($id);
-        return view('kebutuhan.edit', compact('kebutuhan'));
+        $donasi = Donasi::findOrFail($id);
+        return view('donasi.edit', compact('donasi'));
 
     }
 
@@ -86,44 +90,48 @@ class KebutuhanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kebutuhan  $kebutuhan
+     * @param  \App\Models\donasi  $donasi
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'kebutuhan_harian' => 'required',
-            'kebutuhan_obat' => 'required',
+            'nama' => 'required',
+            'email' => 'required',
+            'no_tlpn' => 'required',
+            'ket' => 'required',
         ]);
 
-        $kebutuhan = Kebutuhan::findOrFail($id);
-        $kebutuhan->kebutuhan_harian = $request->kebutuhan_harian;
-        $kebutuhan->kebutuhan_obat = $request->kebutuhan_obat;
-        $kebutuhan->save();
+        $donasi = Donasi::findOrFail($id);
+        $donasi->nama = $request->nama;
+        $donasi->email = $request->email;
+        $donasi->no_tlpn = $request->no_tlpn;
+        $donasi->ket = $request->ket;
+        $donasi->save();
         Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Data edited successfully",
         ]);
 
-        return redirect()->route('kebutuhan.index');
+        return redirect()->route('donasi.index');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kebutuhan  $kebutuhan
+     * @param  \App\Models\donasi  $donasi
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $kebutuhan = Kebutuhan::findOrFail($id);
-        $kebutuhan->delete();
+        $donasi = Donasi::findOrFail($id);
+        $donasi->delete();
         Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Data deleted successfully",
         ]);
-        return redirect()->route('kebutuhan.index');
+        return redirect()->route('donasi.index');
 
     }
 }

@@ -14,7 +14,7 @@ return [
     |
      */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'YAYASAN PONDOK YATIM',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -262,8 +262,8 @@ return [
             'icon' => 'far fa-fw fa-file',
         ],
         [
-            'text' => 'Transaksi',
-            'url' => 'admin/transaksi',
+            'text' => 'Donasi',
+            'url' => 'admin/donasi',
             'icon' => 'far fa-fw fa-file',
         ],
         [

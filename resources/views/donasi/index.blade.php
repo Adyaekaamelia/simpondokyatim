@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Data Kebutuhan</h1>
+                    <h1 class="m-0">Data Donasi</h1>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <a href="{{ route('kebutuhan.create') }}" class="btn btn-sm btn-primary float-right">Tambah
+                        <a href="{{ route('donasi.create') }}" class="btn btn-sm btn-primary float-right">Tambah
                             Data Anak</a>
                     </div>
                     <div class="card-body">
@@ -43,25 +43,29 @@
                                 <thead>
                                 <tr>
                                     <th>Nomor</th>
-                                    <th>Kebutuhan Harian</th>
-                                    <th>Obat-Obatan</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Telepon</th>
+                                    <th>Pesan</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @php $no=1; @endphp
-                                @foreach ($kebutuhan as $data)
+                                @foreach ($donasi as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->kebutuhan_harian }}</td>
-                                        <td>{{ $data->kebutuhan_obat }}</td>
+                                        <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->email }}</td>
+                                        <td>{{ $data->no_tlpn }}</td>
+                                        <td>{{ $data->ket }}</td>
                                         <td>
-                                            <form action="{{ route('kebutuhan.destroy', $data->id) }}" method="post">
+                                            <form action="{{ route('donasi.destroy', $data->id) }}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <a href="{{ route('kebutuhan.edit', $data->id) }}"
+                                                <a href="{{ route('donasi.edit', $data->id) }}"
                                                     class="btn btn-info">Edit</a>
-                                                <a href="{{ route('kebutuhan.show', $data->id) }}"
+                                                <a href="{{ route('donasi.show', $data->id) }}"
                                                     class="btn btn-warning">Show</a>
                                                 <button type="submit" class="btn btn-danger"
                                                     onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>

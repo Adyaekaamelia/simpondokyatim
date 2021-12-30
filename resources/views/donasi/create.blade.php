@@ -5,34 +5,45 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Kegiatan</div>
+                    <div class="card-header">Data Donasi</div>
                     <div class="card-body">
-                        <form action="{{ route('kegiatan.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('donasi.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="">Masukan Judul</label>
-                                <input type="text" name="judul"
-                                    class="form-control @error('judul') is-invalid @enderror">
-                                @error('judul')
+                                <label for="">Masukan Nama</label>
+                                <input type="text" name="nama"
+                                    class="form-control @error('nama') is-invalid @enderror">
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                              <div class="form-group">
-                                <label for="">Masukan Isi</label>
-                                <input type="text" name="isi"
-                                    class="form-control @error('isi') is-invalid @enderror">
-                                @error('isi')
+                                <label for="">Masukan Email</label>
+                                <input type="email" name="email"
+                                    class="form-control @error('email') is-invalid @enderror">
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Masukan Gambar </label>
-                                <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror">
-                                @error('gambar')
+                             <div class="form-group">
+                                <label for="">Masukan Nomer telepon</label>
+                                <input type="text" name="no_tlpn"
+                                    class="form-control @error('no_tlpn') is-invalid @enderror">
+                                @error('no_tlpn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                             <div class="form-group">
+                                <label for="">Masukan Pesan</label>
+                                <input type="text" name="ket"
+                                    class="form-control @error('ket') is-invalid @enderror">
+                                @error('ket')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
