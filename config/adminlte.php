@@ -45,8 +45,8 @@ return [
     |
      */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => 'YAYASAN PONDOK YATIM',
+    'logo_img' => 'vendor/adminlte/dist/img/logo1.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -249,28 +249,24 @@ return [
         [
             'text' => 'Data Anak',
             'url' => 'admin/dataanak',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-address-book',
         ],
         [
             'text' => 'Kegiatan',
             'url' => 'admin/kegiatan',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-address-card',
         ],
         [
             'text' => 'Kebutuhan',
             'url' => 'admin/kebutuhan',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-balance-scale',
         ],
         [
-            'text' => 'Donasi',
+            'text' => 'Data Donatur',
             'url' => 'admin/donasi',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'far fa-address-card',
         ],
-        [
-            'text' => 'Konfirmasi',
-            'url' => 'admin/konfirmasi',
-            'icon' => 'far fa-fw fa-file',
-        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

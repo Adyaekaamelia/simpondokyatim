@@ -35,7 +35,7 @@
                     <div class="card-header">
 
                         <a href="{{ route('kebutuhan.create') }}" class="btn btn-sm btn-primary float-right">Tambah
-                            Data Anak</a>
+                            Kebutuhan</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

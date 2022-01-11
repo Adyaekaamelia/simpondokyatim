@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKonfirmasisTable extends Migration
+class CreateDatadonatursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateKonfirmasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('konfirmasis', function (Blueprint $table) {
+        Schema::create('datadonaturs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('donasi_id')->unsigned();
-            $table->string('bukti');
-            $table->foreign('donasi_id')->references('id')
-                ->on('donasis')->onUpdate('cascade')
-                ->onDelete('cascade');
-
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreateKonfirmasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('konfirmasis');
+        Schema::dropIfExists('datadonaturs');
     }
 }

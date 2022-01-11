@@ -35,7 +35,7 @@
                     <div class="card-header">
 
                         <a href="{{ route('donasi.create') }}" class="btn btn-sm btn-primary float-right">Tambah
-                            Data Anak</a>
+                            Donasi</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

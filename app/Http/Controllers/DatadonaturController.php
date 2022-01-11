@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Konfirmasi_donasi;
+use App\Models\Datadonatur;
 use Illuminate\Http\Request;
 
-class KonfirmasiDonasiController extends Controller
+class DatadonaturController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class KonfirmasiDonasiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Konfirmasi_donasi  $konfirmasi_donasi
+     * @param  \App\Models\Datadonatur  $datadonatur
      * @return \Illuminate\Http\Response
      */
-    public function show(Konfirmasi_donasi $konfirmasi_donasi)
+    public function show(Datadonatur $datadonatur)
     {
         //
     }
@@ -52,10 +52,10 @@ class KonfirmasiDonasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Konfirmasi_donasi  $konfirmasi_donasi
+     * @param  \App\Models\Datadonatur  $datadonatur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Konfirmasi_donasi $konfirmasi_donasi)
+    public function edit(Datadonatur $datadonatur)
     {
         //
     }
@@ -64,10 +64,10 @@ class KonfirmasiDonasiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Konfirmasi_donasi  $konfirmasi_donasi
+     * @param  \App\Models\Datadonatur  $datadonatur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Konfirmasi_donasi $konfirmasi_donasi)
+    public function update(Request $request, Datadonatur $datadonatur)
     {
         //
     }
@@ -75,10 +75,10 @@ class KonfirmasiDonasiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Konfirmasi_donasi  $konfirmasi_donasi
+     * @param  \App\Models\Datadonatur  $datadonatur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Konfirmasi_donasi $konfirmasi_donasi)
+    public function destroy(Datadonatur $datadonatur)
     {
         //
     }
