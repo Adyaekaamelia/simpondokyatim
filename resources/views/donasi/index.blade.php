@@ -47,6 +47,8 @@
                                     <th>Email</th>
                                     <th>Telepon</th>
                                     <th>Pesan</th>
+                                    <th>Nominal</th>
+                                    <th>Bukti</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -59,6 +61,9 @@
                                         <td>{{ $data->email }}</td>
                                         <td>{{ $data->no_tlpn }}</td>
                                         <td>{{ $data->ket }}</td>
+                                        <td>{{ $data->nominal }}</td>
+                                        <td><img src="{{ $data->image() }}" alt="" style="width:150px; height:150px;"
+                                                alt="bukti"></td>
                                         <td>
                                             <form action="{{ route('donasi.destroy', $data->id) }}" method="post">
                                                 @method('delete')

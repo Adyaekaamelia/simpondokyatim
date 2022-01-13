@@ -11,7 +11,7 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="">Masukan Nama </label>
+                                <label for="">Nama </label>
                                 <input type="text" name="nama" value="{{ $donasi->nama }}"
                                     class="form-control @error('nama') is-invalid @enderror">
                                 @error('nama')
@@ -21,7 +21,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Masukan Email</label>
+                                <label for="">Email</label>
                                 <input type="email" name="email" value="{{ $donasi->email }}"
                                     class="form-control @error('email') is-invalid @enderror">
                                 @error('email')
@@ -31,7 +31,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Masukan Nomer Telepon</label>
+                                <label for="">Nomer Telepon</label>
                                 <input type="text" name="no_tlpn" value="{{ $donasi->no_tlpn }}"
                                     class="form-control @error('no_tlpn') is-invalid @enderror">
                                 @error('no_tlpn')
@@ -41,7 +41,7 @@
                                 @enderror
                                 </div>
                             <div class="form-group">
-                                <label for="">Masukan Pesan</label>
+                                <label for="">Pesan</label>
                                 <input type="text" name="ket" value="{{ $donasi->ket }}"
                                     class="form-control @error('ket') is-invalid @enderror">
                                 @error('ket')
@@ -50,7 +50,22 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <div class="form-group">
+                                <label for="">Nominal</label>
+                                <input type="text" name="nominal" value="{{ $donasi->nominal }}"
+                                    class="form-control @error('nominal') is-invalid @enderror">
+                                @error('nominal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Bukti Transfer</label>
+                                <br>
+                                <img src="{{ $donasi->image() }}" height="75" style="padding:10px;" />
+                                <input type="file" name="bukti" class="form-control">
+                            </div>
                            <div class="form-group">
 
                                 <a href="{{ route('donasi.index') }}" class="btn btn-block btn-primary">Kembali</a>

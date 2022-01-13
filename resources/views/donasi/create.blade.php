@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">Data Donasi</div>
                     <div class="card-body">
-                        <form action="{{ route('donasi.store') }}" method="post">
+                        <form action="{{ route('donasi.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="">Masukan Nama</label>
@@ -44,6 +44,25 @@
                                 <input type="text" name="ket"
                                     class="form-control @error('ket') is-invalid @enderror">
                                 @error('ket')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Masukan Nominal</label>
+                                <input type="text" name="nominal"
+                                    class="form-control @error('nominal') is-invalid @enderror">
+                                @error('nominal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                             <div class="form-group">
+                                <label for="">Masukan Bukti Transfer </label>
+                                <input type="file" name="bukti" class="form-control @error('bukti') is-invalid @enderror">
+                                @error('bukti')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

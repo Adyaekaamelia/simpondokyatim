@@ -50,7 +50,22 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <div class="form-group">
+                                <label for="">Masukan Nominal</label>
+                                <input type="text" name="nominal" value="{{ $donasi->nominal }}"
+                                    class="form-control @error('nominal') is-invalid @enderror">
+                                @error('nominal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Masukan Bukti Transfer</label>
+                                <br>
+                                <img src="{{ $donasi->image() }}" height="75" style="padding:10px;" />
+                                <input type="file" name="bukti" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>

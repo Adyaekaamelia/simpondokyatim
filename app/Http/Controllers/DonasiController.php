@@ -44,6 +44,8 @@ class DonasiController extends Controller
             'email' => 'required',
             'no_tlpn' => 'required',
             'ket' => 'required',
+            'nominal' => 'required',
+            'bukti' => 'required|image|max:2048',
         ]);
 
         $donasi = new Donasi;
@@ -51,6 +53,14 @@ class DonasiController extends Controller
         $donasi->email = $request->email;
         $donasi->no_tlpn = $request->no_tlpn;
         $donasi->ket = $request->ket;
+        $donasi->nominal = $request->nominal;
+        // upload image / foto
+        if ($request->hasFile('bukti')) {
+            $image = $request->file('bukti');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/donasi/', $name);
+            $donasi->bukti = $name;
+        }
         $donasi->save();
         Session::flash("flash_notification", [
             "level" => "success",
@@ -100,6 +110,8 @@ class DonasiController extends Controller
             'email' => 'required',
             'no_tlpn' => 'required',
             'ket' => 'required',
+            'nominal' => 'required',
+            'bukti' => 'required|image|max:2048',
         ]);
 
         $donasi = Donasi::findOrFail($id);
@@ -107,6 +119,14 @@ class DonasiController extends Controller
         $donasi->email = $request->email;
         $donasi->no_tlpn = $request->no_tlpn;
         $donasi->ket = $request->ket;
+        $donasi->nominal = $request->nominal;
+        // upload image / foto
+        if ($request->hasFile('bukti')) {
+            $image = $request->file('bukti');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/donasi/', $name);
+            $donasi->bukti = $name;
+        }
         $donasi->save();
         Session::flash("flash_notification", [
             "level" => "success",
