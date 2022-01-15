@@ -53,3 +53,18 @@ Route::get('about', function () {
 Route::get('kontak', function () {
     return view('frontend.kontak');
 });
+Route::get('kegiatan', 'App\Http\Controllers\HomeController@kegiatanya', function () {
+    return view('frontend.kegiatan');
+});
+
+Route::get('kebutuhan', 'App\Http\Controllers\HomeController@kebutuhanya', function () {
+    return view('frontend.kebutuhan');
+});
+
+Route::get('donasi/create', 'App\Http\Controllers\HomeController@donasi', function () {
+    return view('frontend.donasi');
+})->name('createDonasi');
+
+Route::post('donasi', 'App\Http\Controllers\HomeController@storeDonasi', function () {
+    return view('frontend.donasi');
+})->name('storeDonasi');

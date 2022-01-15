@@ -49,9 +49,9 @@
         <ul>
          <li><a class="active" href="/">Beranda</a></li>
           <li><a href="about">Tentang Kami</a></li>
-          <li><a href="resume.html">Kegiatan</a></li>
-          <li><a href="services.html">Kebutuhan</a></li>
-          <li><a href="portfolio.html">Donasi</a></li>
+          <li><a href="kegiatan">Kegiatan</a></li>
+          <li><a href="kebutuhan">Kebutuhan</a></li>
+          <li><a href="donasi">Donasi</a></li>
           <li><a href="kontak">Kontak</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
