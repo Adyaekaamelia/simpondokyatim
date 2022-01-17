@@ -51,7 +51,7 @@
           <li><a href="about">Tentang Kami</a></li>
           <li><a href="resume.html">Kegiatan</a></li>
           <li><a href="kebutuhan">Kebutuhan</a></li>
-          <li><a href="donasi">Donasi</a></li>
+          <li><a href="{{route('createDonasi')}}">Donasi</a></li>
           <li><a href="kontak">Kontak</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
