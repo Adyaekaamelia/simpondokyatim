@@ -8,9 +8,15 @@
           <div class="col-lg-4">
             <div class="info">
               <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h5>Anda Juga Dapat Membantu Kami Dalam Mengasuh, Merawat Dan Mengentaskan Anak-Anak Melalui Donasi</h5>
+                <br><br>
+                {{-- <i class="bi bi-geo-alt"></i> --}}
+                <h4>Rekening Donasi:</h4>
+                <button>
+                <h3>126-00-0002004-9</h3>
+                <h3>a/n : yayasan pondok yatim</h3>
+                </button>
+
               </div>
 
             </div>
