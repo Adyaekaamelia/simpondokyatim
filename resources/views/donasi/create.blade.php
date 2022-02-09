@@ -1,23 +1,13 @@
-@extends('layouts.master')
+@extends('adminlte::page')
 
 @section('content')
-<div class="text-center" >
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Rekening :</h4>
-                <p>123-00-0222098-0</p>
-                <p>a/n : Yayasan pondok yatim</p>
-              </div>
-            </div>
-            </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Data Donasi</div>
                     <div class="card-body">
-                        <form action="{{ route('storeDonasi') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('donasi.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="">Masukan Nama</label>
@@ -25,7 +15,7 @@
                                     class="form-control @error('nama') is-invalid @enderror">
                                 @error('nama')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Nama Wajib Diisi </strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -35,17 +25,17 @@
                                     class="form-control @error('email') is-invalid @enderror">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Email Wajib Diisi</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                              <div class="form-group">
                                 <label for="">Masukan Nomer telepon</label>
-                                <input type="number" name="no_tlpn"
-                                    class="form-control @error('no_tlpn') is-invalid @enderror" >
+                                <input type="text" name="no_tlpn"
+                                    class="form-control @error('no_tlpn') is-invalid @enderror">
                                 @error('no_tlpn')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Nomer telepon ini Wajib diisi</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -55,17 +45,17 @@
                                     class="form-control @error('ket') is-invalid @enderror">
                                 @error('ket')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Pesan Wajib Diisi </strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Masukan Nominal</label>
-                                <input type="number" name="nominal"
-                                    class="form-control @error('nominal') is-invalid @enderror" >
+                                <input type="text" name="nominal"
+                                    class="form-control @error('nominal') is-invalid @enderror">
                                 @error('nominal')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Nominal ini wajib diisi</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -74,15 +64,14 @@
                                 <input type="file" name="bukti" class="form-control @error('bukti') is-invalid @enderror">
                                 @error('bukti')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Wajib Diisi Gambar</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-
-                                <button type="submit" class="btn btn-outline-primary">D O N A S I</button>
+                                <button type="reset" class="btn btn-outline-warning">Reset</button>
+                                <button type="submit" class="btn btn-outline-primary">Simpan</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
