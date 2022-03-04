@@ -266,6 +266,11 @@ return [
             'url' => 'admin/donasi',
             'icon' => 'far fa-address-card',
         ],
+        [
+            'text' => 'Laporan',
+            'url'  => "admin/cetak-laporan",
+            'icon' => 'far fa-folder-open',
+        ],
 
     ],
 

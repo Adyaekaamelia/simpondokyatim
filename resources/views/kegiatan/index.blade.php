@@ -23,6 +23,8 @@
         $('#example').DataTable();
     });
 </script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/deleted.js')}}"></script>
 @endsection
 
 @section('content')
@@ -43,7 +45,7 @@
                                 <tr>
                                     <th>Nomor</th>
                                     <th>Judul</th>
-                                    <th>Isi</th>
+
                                     <th>Gambar</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -54,7 +56,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $data->judul }}</td>
-                                        <td>{{ $data->isi }}</td>
+
                                         <td><img src="{{ $data->image() }}" alt="" style="width:150px; height:150px;"
                                                 alt="gambar"></td>
 
@@ -66,8 +68,8 @@
                                                     class="btn btn-info">Edit</a>
                                                 <a href="{{ route('kegiatan.show', $data->id) }}"
                                                     class="btn btn-warning">Show</a>
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
+                                                <button type="submit" class="btn btn-danger
+                                                    delete-confirm">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

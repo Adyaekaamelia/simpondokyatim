@@ -19,7 +19,7 @@
                         <img src="{{ $data->image()}}" style="width:420px; height:320px;" alt="gambar">
                         <div class="portfolio-info">
                             <h4>{{ $data->judul }}</h4>
-                            <p>{{ $data->isi }}</p>
+                            <p>{!! $data->isi !!}</p>
                         </div>
                     </div>
                 </div>

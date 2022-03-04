@@ -39,7 +39,17 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tanggal</label>
+                                <input type="date" name="tanggal" value="{{ $donasi->tanggal }}"
+                                    class="form-control @error('tanggal') is-invalid @enderror">
+                                @error('tanggal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="form-group">
                                 <label for="">Pesan</label>
                                 <input type="text" name="ket" value="{{ $donasi->ket }}"
@@ -66,7 +76,7 @@
                                 <img src="{{ $donasi->image() }}" height="75" style="padding:10px;" />
                                 <input type="file" name="bukti" class="form-control">
                             </div>
-                           <div class="form-group">
+                            <div class="form-group">
 
                                 <a href="{{ route('donasi.index') }}" class="btn btn-block btn-primary">Kembali</a>
                             </div>

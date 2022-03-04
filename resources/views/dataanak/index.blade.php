@@ -23,6 +23,8 @@
         $('#example').DataTable();
     });
 </script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/deleted.js')}}"></script>
 @endsection
 
 
@@ -45,19 +47,25 @@
                                     <th>Nomor</th>
                                     <th>Nama</th>
                                     <th>Umur</th>
-                                    <th>Tempat,tanggal lahir</th>
+                                    <th>Tempat Lahir</th>
+                                    <th>Tanggal Lahir</th>
                                     <th>Pendidikan</th>
                                     <th>Wali</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @php $no=1; @endphp
+                                @php $no=1;
+                                    $date = Carbon\Carbon::now();
+                                    $date->toDateTimeString();
+                                @endphp
+
                                 @foreach ($dataanak as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->umur }}</td>
+                                        <td>{{  Carbon\Carbon::parse($data->ttl)->diff(\Carbon\Carbon::now())->format("%y") }}</td>
+                                        <td>{{ $data->tempat }}</td>
                                         <td>{{ $data->ttl }}</td>
                                         <td>{{ $data->pendidikan }}</td>
                                         <td>{{ $data->wali }}</td>
@@ -69,9 +77,10 @@
                                                     class="btn btn-info">Edit</a>
                                                 <a href="{{ route('dataanak.show', $data->id) }}"
                                                     class="btn btn-warning">Show</a>
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
+                                                <button type="submit" class="btn btn-danger
+                                                    delete-confirm">Delete</button>
                                             </form>
+
                                         </td>
                                     </tr>
                                 @endforeach

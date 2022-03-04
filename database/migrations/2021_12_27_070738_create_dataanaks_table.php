@@ -17,6 +17,7 @@ class CreateDataanaksTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('umur');
+            $table->string('tempat');
             $table->string('ttl');
             $table->string('pendidikan');
             $table->string('wali');

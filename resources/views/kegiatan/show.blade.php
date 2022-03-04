@@ -22,8 +22,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Isi</label>
-                                <input type="text" name="isi" value="{{ $kegiatan->isi }}"
-                                    class="form-control @error('isi') is-invalid @enderror">
+                                <textarea id="konten" name="isi"
+                                    class="form-control @error('isi') is-invalid @enderror">{{ $kegiatan->isi }}</textarea>
                                 @error('isi')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,3 +46,14 @@
         </div>
     </div>
 @endsection
+@section('js')
+<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+<script>
+   var konten = document.getElementById("konten");
+     CKEDITOR.replace(konten,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+</script>
+@endsection
+

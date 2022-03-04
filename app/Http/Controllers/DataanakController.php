@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Dataanak;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Session;
 
 class DataanakController extends Controller
 {
@@ -46,7 +47,7 @@ class DataanakController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required',
-            'umur' => 'required',
+            'tempat' => 'required',
             'ttl' => 'required',
             'pendidikan' => 'required',
             'wali' => 'required',
@@ -54,15 +55,14 @@ class DataanakController extends Controller
 
         $dataanak = new Dataanak;
         $dataanak->nama = $request->nama;
-        $dataanak->umur = $request->umur;
+        $dataanak->umur = Carbon::parse($request->ttl)->age;
+        $dataanak->tempat = $request->tempat;
         $dataanak->ttl = $request->ttl;
         $dataanak->pendidikan = $request->pendidikan;
         $dataanak->wali = $request->wali;
         $dataanak->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data saved successfully",
-        ]);
+        Alert::success('Good Job', 'Data saved successfully');
+
         return redirect()->route('dataanak.index');
     }
 
@@ -102,6 +102,7 @@ class DataanakController extends Controller
         $validated = $request->validate([
             'nama' => 'required',
             'umur' => 'required',
+            'tempat' => 'required',
             'ttl' => 'required',
             'pendidikan' => 'required',
             'wali' => 'required',
@@ -110,14 +111,14 @@ class DataanakController extends Controller
         $dataanak = Dataanak::findOrFail($id);
         $dataanak->nama = $request->nama;
         $dataanak->umur = $request->umur;
+        $dataanak->tempat = $request->tempat;
         $dataanak->ttl = $request->ttl;
         $dataanak->pendidikan = $request->pendidikan;
         $dataanak->wali = $request->wali;
         $dataanak->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data edited successfully",
-        ]);
+
+        Alert::success('Good Job', 'Data edited successfully');
+
         return redirect()->route('dataanak.index');
     }
 
@@ -131,10 +132,8 @@ class DataanakController extends Controller
     {
         $dataanak = Dataanak::findOrFail($id);
         $dataanak->delete();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data deleted successfully",
-        ]);
+
+        Alert::success('Good Job', 'Data deleted successfully');
         return redirect()->route('dataanak.index');
     }
 }

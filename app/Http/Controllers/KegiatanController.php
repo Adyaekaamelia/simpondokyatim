@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Session;
+use Alert;
 
 class KegiatanController extends Controller
 {
@@ -54,10 +55,8 @@ class KegiatanController extends Controller
             $kegiatan->gambar = $name;
         }
         $kegiatan->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data saved successfully",
-        ]);
+        Alert::success('Good Job', 'Data saved successfully');
+
         return redirect()->route('kegiatan.index');
     }
 
@@ -112,10 +111,8 @@ class KegiatanController extends Controller
         }
 
         $kegiatan->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data edited successfully",
-        ]);
+        Alert::success('Good Job', 'Data edited successfully');
+
 
         return redirect()->route('kegiatan.index');
     }
@@ -130,10 +127,8 @@ class KegiatanController extends Controller
     {
         $kegiatan = Kegiatan::findOrFail($id);
         $kegiatan->delete();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data deleted successfully",
-        ]);
+       Alert::success('Good Job', 'Data deleted successfully');
+
 
         return redirect()->route('kegiatan.index');
     }

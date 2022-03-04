@@ -31,8 +31,18 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Masukan Tempat, tanggal lahir</label>
-                                <input type="text" name="ttl" value="{{ $dataanak->ttl }}"
+                                <label for="">Masukan Tempat lahir</label>
+                                <input type="text" name="tempat" value="{{ $dataanak->tempat }}"
+                                    class="form-control @error('tempat') is-invalid @enderror">
+                                @error('tempat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Masukan Tanggal lahir</label>
+                                <input type="date" name="ttl" value="{{ $dataanak->ttl }}"
                                     class="form-control @error('ttl') is-invalid @enderror">
                                 @error('ttl')
                                     <span class="invalid-feedback" role="alert">
@@ -40,18 +50,25 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
-                                <label for="">Pendidikan</label>
-                                <input type="text" name="pendidikan" value="{{ $dataanak->pendidikan }}"
-                                    class="form-control @error('pendidikan') is-invalid @enderror">
+                                <label for="">Masukan Pendidikan</label>
+                                <select name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror">
+                                    <option value="-">-</option>
+                                    <option value="tidak sekolah" {{$dataanak->pendidikan == "tidak sekolah" ? "selected" : ""}}>tidak sekolah</option>
+                                    <option value="Pendidikan Anak Usia Dini" {{$dataanak->pendidikan == "Pendidikan Anak Usia Dini" ? "selected" : ""}}>Pendidikan Anak Usia Dini</option>
+                                    <option value="Taman Kanak-kanak" {{$dataanak->pendidikan == "Taman Kanak-kanak" ? "selected" : ""}}>Taman Kanak-kanak</option>
+                                    <option value="Sekolah Dasar" {{$dataanak->pendidikan == "Sekolah Dasar" ? "selected" : ""}}>Sekolah Dasar</option>
+                                    <option value="Sekolah Menengah" {{$dataanak->pendidikan == "Sekolah Menengah" ? "selected" : ""}}>Sekolah Menengah</option>
+
+                                </select>
                                 @error('pendidikan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="">Masukan Nama Wali</label>
                                 <input type="text" name="wali" value="{{ $dataanak->wali }}"
@@ -62,7 +79,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>

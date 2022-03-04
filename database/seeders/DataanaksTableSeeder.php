@@ -15,9 +15,9 @@ class DataanaksTableSeeder extends Seeder
     public function run()
     {
         //membuat sample data anak
-        $dataanak1 = Dataanak::create(['nama' => 'Putri', 'umur' => '10', 'ttl' => 'Bandung, 18 mei 2011', 'pendidikan' => 'SD', 'wali' => 'Ida']);
-        $dataanak2 = Dataanak::create(['nama' => 'Ajeng', 'umur' => '11', 'ttl' => 'Sukabimi, 09 april 2010 ', 'pendidikan' => 'SD', 'wali' => 'Dadang']);
-        $dataanak3 = Dataanak::create(['nama' => 'Jaja', 'umur' => '5', 'ttl' => 'Subang, 10 November 2016', 'pendidikan' => 'Belum Sekolah', 'wali' => 'Asep']);
+        $dataanak1 = Dataanak::create(['nama' => 'Putri', 'umur' => '10', 'tempat' => 'Bandung', 'ttl' => '2011-03-09', 'pendidikan' => 'SD', 'wali' => 'Ida']);
+        $dataanak2 = Dataanak::create(['nama' => 'Ajeng', 'umur' => '11', 'tempat' => 'Sukabumi', 'ttl' => '2011-08-08', 'pendidikan' => 'SD', 'wali' => 'Dadang']);
+        $dataanak3 = Dataanak::create(['nama' => 'Jaja', 'umur' => '5', 'tempat' => 'Subang', 'ttl' => '2005-08-01', 'pendidikan' => 'Belum Sekolah', 'wali' => 'Asep']);
 
     }
 }

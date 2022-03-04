@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Donasi;
 use Illuminate\Http\Request;
-use Session;
 
 class DonasiController extends Controller
 {
@@ -18,6 +18,19 @@ class DonasiController extends Controller
         $donasi = Donasi::all();
         return view('donasi.index', compact('donasi'));
 
+    }
+
+    public function cetakForm()
+    {
+        return view('donasi.cetak');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir)
+    {
+        // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
+        $cetak = Donasi::whereDate('tanggal', '>=', $tglawal)->whereDate('tanggal', '<=', $tglakhir)->get();
+        $total = Donasi::whereDate('tanggal', '>=', $tglawal)->whereDate('tanggal', '<=', $tglakhir)->sum('nominal');
+        return view('donasi.cetak-pertanggal', compact('cetak', 'total'));
     }
 
     /**
@@ -39,47 +52,47 @@ class DonasiController extends Controller
      */
     public function store(Request $request)
     {
-            $validated = $request->validate([
-                'nama' => 'required',
-                'email' => 'required',
-                'no_tlpn' => 'required',
-                'ket' => 'required',
-                'nominal' => 'required',
-                'bukti' => 'required|image|max:2048',
-            ]);
+        $validated = $request->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'no_tlpn' => 'required',
+            'tanggal' => 'required',
+            'ket' => 'required',
+            'nominal' => 'required',
+            'bukti' => 'required|image|max:2048',
+        ]);
 
-            $donasi = new Donasi;
-            $donasi->nama = $request->nama;
-            $donasi->email = $request->email;
-            $donasi->no_tlpn = $request->no_tlpn;
-            $donasi->ket = $request->ket;
-            $donasi->nominal = $request->nominal;
-            // upload image / foto
-            if ($request->hasFile('bukti')) {
-                $image = $request->file('bukti');
-                $name = rand(1000, 9999) . $image->getClientOriginalName();
-                $image->move('image/donasi/', $name);
-                $donasi->bukti = $name;
-            }
-            $donasi->save();
-            Session::flash("flash_notification", [
-                "level" => "success",
-                "message" => "Data saved successfully",
-            ]);
-            return redirect()->route('donasi.index');
-
+        $donasi = new Donasi;
+        $donasi->nama = $request->nama;
+        $donasi->email = $request->email;
+        $donasi->no_tlpn = $request->no_tlpn;
+        $donasi->tanggal = $request->tanggal;
+        $donasi->ket = $request->ket;
+        $donasi->nominal = $request->nominal;
+        // upload image / foto
+        if ($request->hasFile('bukti')) {
+            $image = $request->file('bukti');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/donasi/', $name);
+            $donasi->bukti = $name;
         }
+        $donasi->save();
+        Alert::success('Good Job', 'Data saved successfully');
 
-        // /**
-        //  * Display the specified resource.
-        //  *
-        //  * @param  \App\Models\donasi  $donasi
-        //  * @return \Illuminate\Http\Response
-        //  */
-        public function show($id)
-        {
-            $donasi = Donasi::findOrFail($id);
-            return view('donasi.show', compact('donasi'));
+        return redirect()->route('donasi.index');
+
+    }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \App\Models\donasi  $donasi
+    //  * @return \Illuminate\Http\Response
+    //  */
+    public function show($id)
+    {
+        $donasi = Donasi::findOrFail($id);
+        return view('donasi.show', compact('donasi'));
 
     }
 
@@ -109,6 +122,7 @@ class DonasiController extends Controller
             'nama' => 'required',
             'email' => 'required',
             'no_tlpn' => 'required',
+            'tanggal' => 'required',
             'ket' => 'required',
             'nominal' => 'required',
             'bukti' => 'required|image|max:2048',
@@ -118,6 +132,7 @@ class DonasiController extends Controller
         $donasi->nama = $request->nama;
         $donasi->email = $request->email;
         $donasi->no_tlpn = $request->no_tlpn;
+        $donasi->tanggal = $request->tanggal;
         $donasi->ket = $request->ket;
         $donasi->nominal = $request->nominal;
         // upload image / foto
@@ -127,11 +142,7 @@ class DonasiController extends Controller
             $image->move('image/donasi/', $name);
             $donasi->bukti = $name;
         }
-        $donasi->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data edited successfully",
-        ]);
+        Alert::success('Good Job', 'Data edited successfully');
 
         return redirect()->route('donasi.index');
 
@@ -147,10 +158,8 @@ class DonasiController extends Controller
     {
         $donasi = Donasi::findOrFail($id);
         $donasi->delete();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data deleted successfully",
-        ]);
+        Alert::success('Good Job', 'Data deleted successfully');
+
         return redirect()->route('donasi.index');
 
     }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Kebutuhan;
 use Illuminate\Http\Request;
-use Session;
 
 class KebutuhanController extends Controller
 {
@@ -48,10 +48,8 @@ class KebutuhanController extends Controller
         $kebutuhan->kebutuhan_harian = $request->kebutuhan_harian;
         $kebutuhan->kebutuhan_obat = $request->kebutuhan_obat;
         $kebutuhan->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data saved successfully",
-        ]);
+        Alert::success('Good Job', 'Data saved successfully');
+
         return redirect()->route('kebutuhan.index');
 
     }
@@ -100,10 +98,7 @@ class KebutuhanController extends Controller
         $kebutuhan->kebutuhan_harian = $request->kebutuhan_harian;
         $kebutuhan->kebutuhan_obat = $request->kebutuhan_obat;
         $kebutuhan->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data edited successfully",
-        ]);
+        Alert::success('Good Job', 'Data edited successfully');
 
         return redirect()->route('kebutuhan.index');
 
@@ -119,10 +114,8 @@ class KebutuhanController extends Controller
     {
         $kebutuhan = Kebutuhan::findOrFail($id);
         $kebutuhan->delete();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data deleted successfully",
-        ]);
+        Alert::success('Good Job', 'Data deleted successfully');
+
         return redirect()->route('kebutuhan.index');
 
     }

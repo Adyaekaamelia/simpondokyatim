@@ -23,6 +23,8 @@
         $('#example').DataTable();
     });
 </script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/deleted.js')}}"></script>
 @endsection
 
 
@@ -53,8 +55,8 @@
                                 @foreach ($kebutuhan as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->kebutuhan_harian }}</td>
-                                        <td>{{ $data->kebutuhan_obat }}</td>
+                                        <td>{!! $data->kebutuhan_harian !!}</td>
+                                        <td>{!! $data->kebutuhan_obat !!}</td>
                                         <td>
                                             <form action="{{ route('kebutuhan.destroy', $data->id) }}" method="post">
                                                 @method('delete')
@@ -63,8 +65,8 @@
                                                     class="btn btn-info">Edit</a>
                                                 <a href="{{ route('kebutuhan.show', $data->id) }}"
                                                     class="btn btn-warning">Show</a>
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
+                                                <button type="submit" class="btn btn-danger
+                                                    delete-confirm">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

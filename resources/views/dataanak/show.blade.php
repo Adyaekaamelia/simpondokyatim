@@ -31,19 +31,35 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for=""> Tempat, tanggal lahir</label>
-                                <input type="text" name="ttl" value="{{ $dataanak->ttl }}"
-                                    class="form-control @error('ttl') is-invalid @enderror" disabled>
-                                @error('ttl')
+                                <label for="">Tempat lahir</label>
+                                <input type="text" name="tempat" value="{{ $dataanak->tempat }}"
+                                    class="form-control @error('tempat') is-invalid @enderror">
+                                @error('tempat')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for=""> Pendidikan</label>
-                                <input type="text" name="pendidikan" value="{{ $dataanak->pendidikan }}"
-                                    class="form-control @error('pendidikan') is-invalid @enderror" disabled>
+                                <label for="">Tanggal lahir</label>
+                                <input type="date" name="ttl" value="{{ $dataanak->ttl }}"
+                                    class="form-control @error('ttl') is-invalid @enderror">
+                                @error('ttl')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Pendidikan</label>
+                                <select name="pendidikan" value="{{ $dataanak->pendidikan}}" class="form-control @error('pendidikan') is-invalid @enderror">
+                                    <option value="-">-</option>
+                                    <option value="Pendidikan Anak Usia Dini">Pendidikan Anak Usia Dini</option>
+                                    <option value="Taman Kanak-kanak">Taman Kanak-kanak</option>
+                                    <option value="Sekolah Dasar">Sekolah Dasar</option>
+                                    <option value="Sekolah Menengah">Sekolah Menengah</option>
+                                </select>
                                 @error('pendidikan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

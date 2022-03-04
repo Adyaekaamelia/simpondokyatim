@@ -42,6 +42,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('kebutuhan', KebutuhanController::class);
     Route::resource('donasi', DonasiController::class);
 
+    Route::get('/cetak-laporan', 'App\Http\Controllers\DonasiController@cetakForm')->name('cetak-laporan');
+    Route::get('/cetak-laporan-pertanggal/{tglawal}/{tglakhir}',
+        'App\Http\Controllers\DonasiController@cetakPertanggal')
+        ->name('cetak-laporan-pertanggal');
+
 });
 
 Route::get('/', function () {
@@ -53,18 +58,18 @@ Route::get('about', function () {
 Route::get('kontak', function () {
     return view('frontend.kontak');
 });
-Route::get('kegiatan', 'App\Http\Controllers\HomeController@kegiatanya', function () {
+Route::get('kegiatan', 'App\Http\Controllers\FrontendController@kegiatanya', function () {
     return view('frontend.kegiatan');
 });
 
-Route::get('kebutuhan', 'App\Http\Controllers\HomeController@kebutuhanya', function () {
+Route::get('kebutuhan', 'App\Http\Controllers\FrontendController@kebutuhanya', function () {
     return view('frontend.kebutuhan');
 });
 
-Route::get('donasi/create', 'App\Http\Controllers\HomeController@donasi', function () {
+Route::get('donasi/create', 'App\Http\Controllers\FrontendController@donasi', function () {
     return view('frontend.donasi');
 })->name('createDonasi');
 
-Route::post('donasi', 'App\Http\Controllers\HomeController@storeDonasi', function () {
+Route::post('donasi', 'App\Http\Controllers\FrontendController@storeDonasi', function () {
     return view('frontend.donasi');
 })->name('storeDonasi');

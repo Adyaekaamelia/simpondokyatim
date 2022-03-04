@@ -18,6 +18,7 @@ class CreateDonasisTable extends Migration
             $table->string('nama');
             $table->string('email');
             $table->string('no_tlpn');
+            $table->date('tanggal');
             $table->string('ket');
             $table->BigInteger('nominal');
             $table->string('bukti');
