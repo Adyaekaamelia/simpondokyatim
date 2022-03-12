@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Donasi extends Model
 {
     use HasFactory;
+    
     public function image()
     {
         if ($this->bukti && file_exists(public_path('image/donasi/' . $this->bukti))) {
