@@ -66,7 +66,7 @@ Route::get('kebutuhan', 'App\Http\Controllers\FrontendController@kebutuhanya', f
     return view('frontend.kebutuhan');
 });
 
-Route::get('donasi/create', 'App\Http\Controllers\FrontendController@donasi', function () {
+Route::get('donasi', 'App\Http\Controllers\FrontendController@donasi', function () {
     return view('frontend.donasi');
 })->name('createDonasi');
 
