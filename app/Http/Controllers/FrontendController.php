@@ -49,7 +49,7 @@ class FrontendController extends Controller
             'bukti' => 'required|image|max:2048',
         ]);
 
-        $donasi = new Donasi;
+        $donasi = new Donasi();
         $donasi->nama = $request->nama;
         $donasi->email = $request->email;
         $donasi->no_tlpn = $request->no_tlpn;
