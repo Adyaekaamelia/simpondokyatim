@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\Models\Donasi;
+use App\Models\Donation;
 use App\Models\Kebutuhan;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class FrontendController extends Controller
             'bukti' => 'required|image|max:2048',
         ]);
 
-        $donasi = new Donasi;
+        $donasi = new Donation;
         $donasi->nama = $request->nama;
         $donasi->email = $request->email;
         $donasi->no_tlpn = $request->no_tlpn;

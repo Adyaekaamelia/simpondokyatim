@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Donasi extends Model
+class Donation extends Model
 {
     use HasFactory;
-    
+
+    protected $table = "donasis";
+
     public function image()
     {
         if ($this->bukti && file_exists(public_path('image/donasi/' . $this->bukti))) {
