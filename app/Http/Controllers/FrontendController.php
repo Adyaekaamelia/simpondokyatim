@@ -56,7 +56,7 @@ class FrontendController extends Controller
         $donasi->tanggal = $request->tanggal;
         $donasi->ket = $request->ket;
         $donasi->nominal = $request->nominal;
-        // upload image / foto
+// upload image / foto
         if ($request->hasFile('bukti')) {
             $image = $request->file('bukti');
             $name = rand(1000, 9999) . $image->getClientOriginalName();
@@ -64,6 +64,7 @@ class FrontendController extends Controller
             $donasi->bukti = $name;
         }
         $donasi->save();
+
         Alert::success('Donasi Berhasil', 'Terimakasih atas bantuan dan donasi yang diberikan Bapak/Ibu, untuk anak asuh kami');
         return back();
 
