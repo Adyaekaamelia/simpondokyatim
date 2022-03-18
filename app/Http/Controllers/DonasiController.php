@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\Models\Donasi;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 
 class DonasiController extends Controller
@@ -15,7 +15,7 @@ class DonasiController extends Controller
      */
     public function index()
     {
-        $donasi = Donasi::all();
+        $donasi = Donation::all();
         return view('donasi.index', compact('donasi'));
 
     }

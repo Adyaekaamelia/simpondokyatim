@@ -5,7 +5,9 @@
         <!-- ======= Hero Section ======= -->
         <section id="resume" class="resume">
             <div class="container" data-aos="fade-up">
-
+                <br>
+                <br>
+                <br>
                 <div class="section-title">
                     <h2>Daftar Kebutuhan</h2>
                     <p>Jika anda ingin membantu dengan menyiapkan kebutuhan-kebutuhan, anda dapat mempersiapkan sesuai
@@ -33,5 +35,4 @@
 
             </div>
         </section><!-- End Hero -->
-
     @endsection

@@ -13,8 +13,7 @@
                     <br>
                     <div>
                         <center>
-                            <img src="http://127.0.0.1:8000/assets/img/download.jpg" class="img-circle elevation-2"
-                                alt="User Image" width="500px" height="400px">
+
 
                         </center>
                     </div>
