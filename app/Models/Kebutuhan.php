@@ -9,7 +9,5 @@ class Kebutuhan extends Model
 {
     use HasFactory;
 
-    protected $visible = ['judul', 'isi', 'gambar'];
-    protected $fillable = ['judul', 'isi', 'gambar'];
     public $timestamps = true;
 }
