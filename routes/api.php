@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\API\DataanakController;
 use App\Http\Controllers\API\KategoriController;
+use App\Http\Controllers\API\KebutuhanController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('kegiatan', KategoriController::class);
 Route::resource('dataanak', DataanakController::class);
-
+Route::resource('kebutuhan', KebutuhanController::class);
 Route::resource('User', UserController::class);
 Route::resource('dataanak2', ApiController::class);
