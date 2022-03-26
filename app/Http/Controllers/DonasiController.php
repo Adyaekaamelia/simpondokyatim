@@ -28,8 +28,8 @@ class DonasiController extends Controller
     public function cetakPertanggal($tglawal, $tglakhir)
     {
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
-        $cetak = Donasi::whereDate('tanggal', '>=', $tglawal)->whereDate('tanggal', '<=', $tglakhir)->get();
-        $total = Donasi::whereDate('tanggal', '>=', $tglawal)->whereDate('tanggal', '<=', $tglakhir)->sum('nominal');
+        $cetak = Donation::whereDate('tanggal', '>=', $tglawal)->whereDate('tanggal', '<=', $tglakhir)->get();
+        $total = Donation::whereDate('tanggal', '>=', $tglawal)->whereDate('tanggal', '<=', $tglakhir)->sum('nominal');
         return view('donasi.cetak-pertanggal', compact('cetak', 'total'));
     }
 
